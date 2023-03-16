@@ -1,0 +1,38 @@
+<h1>Dpersonals#index</h1>
+<p>Find me in app/views/dpersonals/index.html.erb</p>
+<%= link_to 'Nuevo Registro', new_dpersonal_path %>
+<table>
+<thead>
+  <th>N</th>
+  <th>Cedula</th>
+  <th>Nombre</th>
+  <th>Género</th>
+  <th>Email</th>
+  <th>País</th>
+  <th>Departamento</th>
+  <th>Ciudad</th>
+  <th>Dirección</th>
+  <th>Productos</th>
+  <th>Actualizar</th>
+</thead>
+<tbody>
+  <% @dpersonals.each do |dpersonal| %>
+<tr>
+  <th><%= dpersonal.id %></th>
+  <th><%= dpersonal.cedula %></th>
+  <th><%= dpersonal.nombre %></th>
+  <th><%= dpersonal.genero %></th>
+  <th><%= dpersonal.email %></th>
+  <th><%= dpersonal.pais %></th>
+  <th><%= dpersonal.departamento %></th>
+  <th><%= dpersonal.ciudad %></th>
+  <th><%= dpersonal.direccion %></th>
+  <th><%= link_to 'Ver', dpersonal_dproductos_path(dpersonal) %></th>
+  <th><%= link_to 'Actualizar', edit_dpersonal_path(dpersonal) %></th>
+</tr>
+  <% end %>
+</tbody>
+</table>
+<h2><%= link_to 'Salir', inicio_index_path %></h2>
+
+<p><h2> <%= link_to 'Administrar Catálogo de Láminas', laminas_path %></h2></p>

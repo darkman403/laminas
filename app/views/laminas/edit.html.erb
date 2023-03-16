@@ -1,0 +1,20 @@
+<h1>Laminas#Edit</h1>
+<p>Sistema de actualización de Láminas ducativas con imagen</p>
+<%= form_with model: @lamina do |form| %>
+<% #form_with model: @lamina, url: lamina_path do |form| %>
+<% #form_with model: @lamina, url: '/laminas/:id' do |form| %>
+
+  <div>
+  <%= form.label :Ref %>
+  <%= form.text_field :lamref %>
+  </div>
+  <div>
+  <%= form.label :Nombre %>
+  <%= form.text_field :lamnombre %>
+  </div>
+  <div>
+  <%= form.label :Imagen %>
+  <%= form.file_field :photo %>
+  </div>
+  <%= form.submit %>
+<% end %>

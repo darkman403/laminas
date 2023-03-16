@@ -1,0 +1,44 @@
+<h1>Cliente:</h1>
+<p>Estos son los datos personales del cliente</p>
+ID: <%= @dpersonal.id %><br>
+CEDULA: <%= @dpersonal.cedula %><br>
+NOMBRE: <%= @dpersonal.nombre %><br>
+GENERO: <%= @dpersonal.genero %><br>
+EMAIL: <%= @dpersonal.email %><br>
+PAIS: <%= @dpersonal.pais %><br>
+DEPTO: <%= @dpersonal.departamento %><br>
+CIUDAD: <%= @dpersonal.ciudad %><br>
+DIRECCION: <%= @dpersonal.direccion %><br>
+
+<h1>Productos:</h1>
+<p>Estos son los productos personales del cliente</p>
+
+<% @dproductos.each do |dproducto| %>
+      <h3> Produto:</h3>
+        ID: 	<b><%= dproducto.id%></b><br>
+        CEDULA:	<b><%= dproducto.cedula%></b><br>
+        N° DE POLIZA:	<b><%= dproducto.poliza%></b><br>
+        VALOR DEL SEGURO:	<b><%= dproducto.valaseg%></b><br>
+        AGENCIA ASEGURADORA:	<b><%= dproducto.ciaaseg%></b><br>
+        ESTADO DEL SEGURO:	<b><%= dproducto.estadoseg%></b><br>
+        PRODUCTO ASEGURADO:	<b><%= dproducto.pdtaseg%></b><br>
+        <b><%=
+          if (dproducto.estadoseg == "activo")
+              if (dproducto.pdtaseg == "vida")
+                    link_to 'Láminas Solicitadas por el Cliente>>', new_dproducto_solicitud_path(dproducto, :md => "1")
+              else
+                      '-'
+              end
+            end
+          %></b><br>
+        <%= link_to 'Ver', dproducto_path(dproducto)%>
+        <%= link_to 'Editar', edit_dpersonal_dproducto_path(dproducto.dpersonal, dproducto) %>
+        <%= link_to 'Eliminar', [dproducto.dpersonal, dproducto], data: {turbo_method: :delete, turbo_confirm: '¿Esta seguro?'} %>
+    <% end %>
+<%#= render @dpersonal.dproductos %>
+
+<%= render 'dproductos/form' %>
+<h2>
+<%= link_to 'Inicio', dpersonals_path %>
+</h2>
+<h2><%= link_to 'Salir', inicio_index_path %></h2>

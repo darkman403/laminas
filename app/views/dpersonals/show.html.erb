@@ -1,0 +1,23 @@
+<h2>Datos Personales (Show)</h2>
+<p>Estos son sus datos personales, por su seguridad manténgalos siempre actualizados</p>
+<%#= link_to 'Inicio', dpersonals_path %>
+<p>
+<%= link_to 'Actualice sus Datos Personales', edit_dpersonal_path(@dpersonal) %>
+<%#= link_to 'Eliminar', dpersonal_path(@dpersonal), data: {turbo_method: :delete, turbo_confirm: '¿Esta seguro?'} %>
+</p>
+
+ID: <%= @dpersonal.id %><br>
+CEDULA: <%= @dpersonal.cedula %><br>
+NOMBRE: <%= @dpersonal.nombre %><br>
+GENERO: <%= @dpersonal.genero %><br>
+EMAIL: <%= @dpersonal.email %><br>
+PAIS: <%= @dpersonal.pais %><br>
+DEPTO: <%= @dpersonal.departamento %><br>
+CIUDAD: <%= @dpersonal.ciudad %><br>
+DIRECCION: <%= @dpersonal.direccion %><br>
+
+<h2>Productos del Cliente:</h2>
+<%= render @dpersonal.dproductos %>
+
+<%#= render 'dproductos/form' %>
+<h2><%= link_to 'Salir', inicio_index_path %></h2>

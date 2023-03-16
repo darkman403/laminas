@@ -1,0 +1,48 @@
+<h1>Módulo de Consulta de Productos</h1>
+<h2> Cliente - Bienvenido </h2>
+<div>
+<p>
+  Usted se encuentra en nuestro módulo de consulta de productos,<br>
+  Por favor ingrese su <b>número de cédula</b> para consultar sus datos y productos:
+</p>
+<p>
+  <%= form_tag inicio_index_path, method: :get do %>
+    <%= text_field_tag :ced, params[:ced], placeholder: "Cedula del Cliente" %>
+    <%= submit_tag "Buscar", name: nil %>
+  <% end %>
+</p>
+</div>
+<br>
+<br>
+
+<div>
+<h2> Administrador - Bienvenido </h2>
+<p>
+    Si usted hace parte del área administrativa, por favor ingrese su contraseña: => <b>(administrador)</b>:
+
+  <%= form_tag inicio_index_path, method: :get do %>
+    <%= text_field_tag :adm, params[:adm], placeholder: "Pass - Administrador" %>
+    <%= submit_tag "Buscar", name: nil %>
+  <% end %>
+</p>
+  </div>
+<b>IMPORTANTE:</b> Este es un sistema para una empresa Corredora de Seguros que desea
+mantener informado a sus clientes sobre los Productos que adquirieron con la empresa
+y el estado en que se encuentra el producto.<br>
+Además pretende hacer un reconocimiento por el producto adquirido; en este caso se permite a los <b>Educadores</b> que poseen un <b>seguro de Vida</b>, solicitar
+una(1) <b>Lámina Educativa</b> por cada 10 millones de <b>Valor asegurado</b>.
+<br><br>
+En el Inicio, se podrá observar un espacio para el <b>Cliente</b> y otro para el <b>Administrador del sistema</b>
+<br>
+<br>
+Para probar el sistema, pruebe con las siguientes identificaciones:
+<br>
+<% @cedu.each do |cedu| %>
+  <%= cedu.cedula %><br>
+    <% end %>
+
+<%
+if @cedula.present?
+@cedula.id
+end
+%>

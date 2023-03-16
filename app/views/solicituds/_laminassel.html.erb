@@ -1,0 +1,31 @@
+<h2>Láminas Seleccionadas</h2>
+<% #@solicitud = @dproducto.solicituds
+#ESTA CONSULTA COMPLEMENTA el
+#@dproducto = Dproducto.find(params[:dproducto_id])
+#que hay en solicitud#controller // def new
+%>
+<table border="1">
+  <thead>
+      <tr>
+        <th>Cédula</th>
+        <th>lamref</th>
+        <th>lamnombre</th>
+        <th>created_at</th>
+        <th>Borrar</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @contador=0
+          @solicitud.each do |solicitud|
+           @contador=@contador+1 %>
+        <tr>
+          <th><%= solicitud.cedula %></th>
+          <th><%= solicitud.lamref %></th>
+          <th><%= solicitud.lamnombre %></th>
+          <th><%= solicitud.created_at %></th>
+          <th><%= link_to 'Retirar', [solicitud.dproducto, solicitud], data: {turbo_method: :delete, turbo_confirm: '¿Esta seguro?'} %> </th>
+        </tr>
+        <% end %>
+      </tbody>
+  </table>
+<% @conta=@contador %><br>

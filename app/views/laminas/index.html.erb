@@ -1,0 +1,30 @@
+<h1>ADMINISTRACIÓN DE CATALOGO DE LÁMINAS EDUCATIVAS</H1>
+<p><H3><%= link_to 'Insertar Nueva Lámina', new_lamina_path  %></H3></p>
+
+
+<table border="1">
+  <thead>
+      <tr>
+        <th>Código</th>
+        <th>Titulo</th>
+        <th>Imagen</th>
+        <th>Actualizar</th>
+        <th>Borrar</th>
+
+      </tr>
+      </thead>
+    <tbody>
+      <% @laminas.each do |lamina| %>
+      <tr>
+        <th><%= lamina.lamref  %></th>
+        <th><%= lamina.lamnombre  %></th>
+        <th><%= image_tag lamina.photo, width: 200 if lamina.photo.attached? %></th>
+        <th><%= link_to 'Editar Lamina', edit_lamina_path(lamina)  %></th>
+        <th><%= link_to 'Eliminar', lamina_path(lamina), data: {turbo_method: :delete, turbo_confirm: '¿Esta seguro?'} %></th>
+
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<p><H3><%= link_to 'Salir', inicio_index_path  %></H3></p>

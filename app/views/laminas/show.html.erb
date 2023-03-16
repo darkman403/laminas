@@ -1,0 +1,9 @@
+<H2>LAMINA EDUCATIVA</H2>
+<H3><%= @lamina.lamnombre  %></H3>
+<%= image_tag @lamina.photo if @lamina.photo.attached? %>
+
+<p>   <H3><%= @lamina.lamref  %></H3></p>
+<%= link_to 'Editar Lamina', edit_lamina_path(@lamina)  %>
+
+<p>   <H3>
+<%= link_to 'Inicio Láminas', laminas_path  %></H3></p>

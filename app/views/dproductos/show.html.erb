@@ -1,0 +1,14 @@
+<h1>Dproductos#show</h1>
+<p>Find me in app/views/dproductos/show.html.erb</p>
+
+  ID: 	<%= @dproducto.id%><br>
+  CEDULA:	<%= @dproducto.cedula%><br>
+  POLIZA:	<%= @dproducto.poliza%><br>
+  VALASEG:	<%= @dproducto.valaseg%><br>
+  CIAASEG:	<%= @dproducto.ciaaseg%><br>
+  ESTADOSEG:	<%= @dproducto.estadoseg%><br>
+  PDTASEG:	<%= @dproducto.pdtaseg%><br>
+  <%= link_to 'Editar', edit_dpersonal_dproducto_path(@dproducto.dpersonal, @dproducto) %><br>
+  <%#= link_to 'Eliminar', [@dproducto.dpersonal, @dproducto], data: {turbo_method: :delete, turbo_confirm: '¿Esta seguro?'} %>
+  <a href="javascript:history.back()"> Volver Atrás</a>
+  </p>

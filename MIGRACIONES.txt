@@ -1,0 +1,82 @@
+rails g controller solicituds index show new edit
+
+rails g controller dproductos index show new edit
+
+rails g controller dpersonals index show new edit
+
+rails g controller laminas index show new edit
+
+rails g controller inicio index
+
+
+------------------------------------------------------------
+rails generate model Lamina lamref:string lamnombre:string
+
+class CreateLaminas < ActiveRecord::Migration[7.0]
+  def change
+    create_table :laminas do |t|
+      t.string :lamref, null: false, unique: true
+      t.string :lamnombre, null: false
+
+      t.timestamps
+    end
+  end
+end
+
+----------------------------------------------------------------
+rails generate model Dpersonal
+
+class CreateDpersonals < ActiveRecord::Migration[7.0]
+  def change
+    create_table :dpersonals do |t|
+      t.integer :cedula, null: false, unique: true
+      t.string :nombre, null: false
+      t.string :genero, null: false
+      t.string :email, null: false, unique: true
+      t.string :pais, null: false
+      t.string :departamento, null: false
+      t.string :ciudad, null: false
+      t.string :direccion, null: false
+
+      t.timestamps
+    end
+  end
+end
+
+----------------------------------------------------------------
+rails generate model Dproducto
+
+class CreateDproductos < ActiveRecord::Migration[7.0]
+  def change
+    create_table :dproductos do |t|
+      t.integer :cedula, null: false
+      t.string :poliza, null: false
+      t.integer :valaseg, null: false
+      t.string :ciaaseg, null: false
+      t.string :estadoseg, null: false
+      t.string :pdtaseg, null: false
+	t.references :dpersonal, null: false, foreign_key: true 
+
+      t.timestamps
+    end
+  end
+end
+
+----------------------------------------------------------------
+rails generate model Solicitud
+
+class CreateSolicituds < ActiveRecord::Migration[7.0]
+  def change
+    create_table :solicituds do |t|
+      t.integer :cedula, null: false
+      t.string :lamref, null: false
+      t.string :lamnombre, null: false
+      t.integer :carta
+      t.integer :empaque
+      t.datetime :enviadoen
+	t.references :dproducto, null: false, foreign_key: true 
+      t.timestamps
+    end
+  end
+end
+

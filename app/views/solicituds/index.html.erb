@@ -1,0 +1,25 @@
+<h1>Láminas Solicitadas por el Cliene</h1>
+<p>Estas es la solicitud de Láminas realizada por el cliente:</p>
+<% @ced = @dproducto.cedula%>
+<B>NOTA: Si al presionar en la lámina que desea su selección no es efectiva, por favor presione F5 y seleccione nuevamente</B>
+<%= render 'laminassel' %>
+
+<h3>
+<%#= link_to 'Volver', dpersonal_path(@personal.id) %>
+</h3>
+
+<% valaseg = @dproducto.valaseg;
+   valaseg = (valaseg/10000000.0).ceil; %>
+Usted puede solicitar: <%= valaseg%> Laminas Educativas<br>
+<%= @conta%>
+
+
+    <h3><%=
+      if (valaseg>=@conta)
+          render 'form'
+      else
+       "Usted ha completado su solicitud de Láminas Educativas<br>".html_safe+
+       "Su Obsequio será enviado a la dirección:<br>".html_safe+
+       @personal.direccion+" de la ciudad de: "+@personal.ciudad
+      end
+    %></h3>

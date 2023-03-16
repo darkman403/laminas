@@ -1,0 +1,33 @@
+<h2> Añadir o Editar Los Productos </h2>
+<%#= form_for([@dpersonal, @dpersonal.dproductos.build]) do |f| %>
+<%= form_with model: [@dpersonal, @dpersonal.dproductos.build] do |f| %>
+<% @ced = @dpersonal.cedula%>
+<div>
+<%=	f.label :cedula	%>
+<%= f.radio_button :cedula, @ced, :checked => true  %><%= @ced %>
+<%#	f.text_field :cedula %>
+</div>
+<div>
+<%=	f.label	:poliza	%>
+<%=	f.text_field	:poliza	%>
+</div>
+<div>
+<%=	f.label	:valaseg	%>
+<%=	f.text_field	:valaseg	%>
+</div>
+<div>
+<%=	f.label	:ciaaseg	%>
+<%=	f.text_field	:ciaaseg	%>
+</div>
+<div>
+<%=	f.label	:estadoseg	%>
+<%#=	f.text_field	:estadoseg	%>
+<%=	f.select(:estadoseg, options_for_select([['Activo','activo'],['Inactivo','inactivo']]), { include_blank: 'Seleccionar' })%>
+</div>
+<div>
+<%=	f.label	:pdtaseg	%>
+<%=	f.select(:pdtaseg, options_for_select([['Vida','vida'], ['Vehiculo','vehiculo'],['Hogar','hogar']]), { include_blank: 'Seleccionar' })%>
+<%#=	f.text_field	:pdtaseg	%>
+</div>
+<%= f.submit "Guardar" %>
+<% end %>

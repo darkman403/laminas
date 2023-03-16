@@ -1,0 +1,71 @@
+<%= render 'laminassel' %>
+<h2>Catálogo de Láminas</h2>
+<%#= @conta %>
+<%#= @valaseg%>
+  <%=
+      if (@conta>=@valaseg)
+      "Usted ha completado su solicitud de Láminas Educativas<br>".html_safe+
+      "Su Obsequio será enviado a la dirección:<br>".html_safe+
+      @personal.direccion+" de la ciudad de: "+@personal.ciudad
+      end
+  %>
+
+<%=
+#Este hash esconde la tabla cuando se completo la solicitud
+  if (@conta>=@valaseg)
+      "<div hidden>".html_safe
+  end
+%>
+<table border="1">
+  <thead>
+      <tr>
+        <th>Cédula</th>
+        <th>Código</th>
+        <th>Título</th>
+        <th>Imagen</th>
+        <th>Escoger</th>
+      </tr>
+      </thead>
+    <tbody>
+        <% @laminas.each do |lamina| %>
+          <tr>
+            <%= form_with model: [@dproducto, @dproducto.solicituds.build] do |f| %>
+
+            <th>
+              <%=	f.label @ced	%><br>
+              <%= f.text_field :cedula,value: @ced %><br>
+              <%#= f.radio_button :cedula, @ced, :checked => true  %><br>
+            </th>
+
+            <th>
+              <%= f.label lamina.lamref  %><br>
+              <%= f.text_field :lamref,value: lamina.lamref %><br>
+              <%#= f.radio_button :lamref, lamina.lamref, :checked => true  %>
+            </th>
+
+            <th>
+              <%= f.label lamina.lamnombre  %><br>
+              <%= f.text_field :lamnombre,value: lamina.lamnombre %><br>
+              <%#= f.radio_button :lamnombre, lamina.lamnombre, :checked => true  %>
+            </th>
+
+            <th>
+              <%= image_tag lamina.photo, width: 200 if lamina.photo.attached? %>
+            </th>
+
+            <th>
+              <%= f.submit "Seleccionar" %>
+            </th>
+              <% end %>
+          </tr>
+
+        <% end %>
+
+    </tbody>
+  </table>
+  <%=
+  #Este hash esconde la tabla cuando se completo la solicitud
+    if (@conta>=@valaseg)
+        "</div>".html_safe
+    end
+  %>

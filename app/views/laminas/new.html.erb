@@ -1,0 +1,24 @@
+<h1>Laminas#New</h1>
+<p>Sistema de carga de láminas Educativas con imagen</p>
+<%#= form_with model: @lamina do |form| %>
+<%= form_with model: @lamina, url: laminas_path do |form| %>
+<%#= form_for laminas_path do |form| %>
+
+  <div>
+  <%= form.label :Ref %>
+  <%= form.text_field :lamref %>
+  </div>
+  <div>
+  <%= form.label :Nombre %>
+  <%= form.text_field :lamnombre %>
+  </div>
+  <div>
+  <%= form.label :Imagen %>
+  <%= form.file_field :photo %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+
+<p>   <H3>
+<%= link_to 'Inicio Láminas', laminas_path  %></H3></p>

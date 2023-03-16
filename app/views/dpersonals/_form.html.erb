@@ -1,0 +1,56 @@
+<%= form_with model: @dpersonal do |f| %>
+
+<% @dpersonal.errors.full_messages.each do |error|%>
+<div>
+<%= error %>
+ </div>
+<% end %>
+<! #form_for :articulo, url: articulo_path(@articulo), method: :patch do |f| %>
+<! OJO NO ES PATH ES PATCH Y NO ES articulos_path es articulo_path >
+<% if @dpersonal.errors.any? %>
+    <div id="error_explain">
+      <h2>No se ha permitido guardar por:<%= pluralize @dpersonal.errors.count, 'error'%></h2>
+        <ul>
+          <% @dpersonal.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<div>
+<%= f.label :cedula %>
+<%= f.text_field :cedula %>
+</div>
+<div>
+<%= f.label :nombre %>
+<%= f.text_field :nombre %>
+</div>
+<div>
+<%= f.label :genero %><br>
+<%= f.radio_button :genero, "masculino"  %>Masculino<br>
+<%= f.radio_button :genero, "femenino"  %>Femenino<br>
+</div>
+<div>
+<%= f.label :email %>
+<%= f.email_field  :email %>
+</div>
+<div>
+<%= f.label :pais %>
+<%= f.text_field  :pais %>
+</div>
+<div>
+<%= f.label :departamento %>
+<%= f.text_field  :departamento %>
+</div>
+<div>
+<%= f.label :ciudad %>
+<%= f.text_field  :ciudad %>
+</div>
+<div>
+<%= f.label :direccion %>
+<%= f.text_field  :direccion %>
+</div>
+<%= f.submit %>
+
+<% end %>

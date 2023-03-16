@@ -1,0 +1,30 @@
+<H1>SELECCION DE LAMINAS</H1>
+<% @ced = @dproducto.cedula%>
+<% valaseg = @dproducto.valaseg;
+   valaseg = (valaseg/10000000.0).ceil; @valaseg=valaseg %>
+<b>Estimado cliente, usted puede solicitar: <%= valaseg%> Laminas Educativas</b><br>
+<%#= @valaseg%>
+<B>NOTA: Si al presionar en la lámina que desea su selección no es efectiva, por favor presione F5 y seleccione nuevamente</B>
+<%
+  @md=params[:md]
+  if @md.present?
+  @md="1"
+  end
+%>
+<h3>
+    <%=
+        if @md=="1"
+        link_to 'Volver_Admin', dpersonal_dproductos_path(@personal.id)
+        else
+        link_to 'Volver_Cliente', dpersonal_path(@personal.id)
+        end
+    %>
+</h3>
+
+
+    <%=
+    #Carga el frame de solilcitud de laminas
+    turbo_frame_tag 'categories1' do
+          render 'form'
+    end
+    %>

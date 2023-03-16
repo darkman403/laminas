@@ -1,0 +1,30 @@
+<h1>Actualizar Datos del Seguro</h1>
+<p>Estos son los datos del Seguro del Cliente, actualicelos si lo considera necesario:</p>
+<%= form_with model: ([@dproducto.dpersonal, @dproducto]) do |f| %>
+
+<% @ced = @dpersonal.cedula%>
+<div>
+<%=	f.label :cedula	%>
+<%= f.radio_button :cedula, @ced, :checked => true  %><%= @ced %>
+<div>
+<%=	f.label	:poliza	%>
+<%=	f.text_field	:poliza	%>
+</div>
+<div>
+<%=	f.label	:valaseg	%>
+<%=	f.text_field	:valaseg	%>
+</div>
+<div>
+<%=	f.label	:ciaaseg	%>
+<%=	f.text_field	:ciaaseg	%>
+</div>
+<div>
+<%=	f.label	:estadoseg	%>
+<%=	f.text_field	:estadoseg	%>
+</div>
+<div>
+<%=	f.label	:pdtaseg	%>
+<%=	f.text_field	:pdtaseg	%>
+</div>
+<%= f.submit 'Actaulizar'%>
+<% end %>
